@@ -5,8 +5,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define WINDOW_WIDTH 640
-#define WINDOW_HEIGHT 480
+#define WINDOW_WIDTH 320
+#define WINDOW_HEIGHT 320
 #define TILE_SIZE 20
 #define GRID_WIDTH (WINDOW_WIDTH / TILE_SIZE)
 #define GRID_HEIGHT (WINDOW_HEIGHT / TILE_SIZE)
@@ -27,6 +27,7 @@ typedef struct {
     Position position;
 } Food;
 
+extern SDL_Texture* imageChargementTexture;
 extern Snake snake;
 extern Food food;
 extern SDL_Texture* gameOverTexture;
@@ -46,6 +47,7 @@ extern SDL_Texture* tailDownTexture;
 extern SDL_Texture* tailLeftTexture;
 extern SDL_Texture* foodTexture;
 extern SDL_Texture* wallTexture;
+extern int score;
 
 int initGame(SDL_Renderer* renderer);
 void initSnake();
@@ -55,5 +57,6 @@ int checkCollisions();
 void renderGame(SDL_Renderer* renderer);
 void cleanupGame();
 void changeDirection(Direction newDirection);
+
 
 #endif
