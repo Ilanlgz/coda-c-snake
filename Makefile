@@ -1,12 +1,12 @@
-CC = gcc
-CFLAGS = -Wall -I/usr/include/SDL2 -I.
-LDFLAGS = -lSDL2 -lSDL2_image
-OBJ = main.o snake.o
+CC=gcc
+CFLAGS=-Wall -I/usr/include/SDL2 -I.
+LDFLAGS=-L/usr/lib -lSDL2 -lSDL2_image -lSDL2_ttf
+EXEC=snake_game
 
-all: snake_game
+all: $(EXEC)
 
-snake_game: $(OBJ)
-	$(CC) -o snake_game $(OBJ) $(LDFLAGS)
+$(EXEC): main.o snake.o
+	$(CC) -o $(EXEC) main.o snake.o $(LDFLAGS)
 
 main.o: main.c snake.h
 	$(CC) $(CFLAGS) -c main.c
@@ -15,6 +15,6 @@ snake.o: snake.c snake.h
 	$(CC) $(CFLAGS) -c snake.c
 
 clean:
-	rm -f $(OBJ) snake_game
+	rm -f *.o $(EXEC)
 
-.PHONY: all clean
+.PHONY: clean
